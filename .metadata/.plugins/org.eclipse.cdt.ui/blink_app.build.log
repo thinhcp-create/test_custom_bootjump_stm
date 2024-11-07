@@ -1,0 +1,22 @@
+17:08:59 **** Incremental Build of configuration Debug for project blink_app ****
+make -j8 all 
+arm-none-eabi-gcc -o "blink_app.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\STM32\Test_bootjump\blink_app\STM32F103RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="blink_app.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: blink_app.elf
+ 
+arm-none-eabi-size  blink_app.elf 
+arm-none-eabi-objdump -h -S blink_app.elf  > "blink_app.list"
+   text	   data	    bss	    dec	    hex	filename
+   4956	     12	   1572	   6540	   198c	blink_app.elf
+arm-none-eabi-objcopy  -O ihex blink_app.elf  "blink_app.hex"
+arm-none-eabi-objcopy  -O binary blink_app.elf  "blink_app.bin"
+Finished building: default.size.stdout
+ 
+Finished building: blink_app.list
+ 
+Finished building: blink_app.hex
+Finished building: blink_app.bin
+ 
+ 
+
+17:08:59 Build Finished. 0 errors, 0 warnings. (took 461ms)
+

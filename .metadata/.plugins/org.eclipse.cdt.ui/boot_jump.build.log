@@ -1,0 +1,23 @@
+15:30:31 **** Incremental Build of configuration Debug for project boot_jump ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "boot_jump.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\STM32\Test_bootjump\boot_jump\STM32F103RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="boot_jump.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: boot_jump.elf
+ 
+arm-none-eabi-size  boot_jump.elf 
+arm-none-eabi-objdump -h -S boot_jump.elf  > "boot_jump.list"
+   text	   data	    bss	    dec	    hex	filename
+   5168	     12	   1572	   6752	   1a60	boot_jump.elf
+arm-none-eabi-objcopy  -O ihex boot_jump.elf  "boot_jump.hex"
+arm-none-eabi-objcopy  -O binary boot_jump.elf  "boot_jump.bin"
+Finished building: default.size.stdout
+ 
+Finished building: boot_jump.hex
+Finished building: boot_jump.list
+Finished building: boot_jump.bin
+ 
+ 
+ 
+
+15:30:31 Build Finished. 0 errors, 0 warnings. (took 657ms)
+
