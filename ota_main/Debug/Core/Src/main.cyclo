@@ -1,0 +1,7 @@
+../Core/Src/main.c:30:6:merge_uint8_to_uint32_reverse	3
+../Core/Src/main.c:64:6:HAL_UART_RxCpltCallback	1
+../Core/Src/main.c:91:5:main	2
+../Core/Src/main.c:147:6:SystemClock_Config	3
+../Core/Src/main.c:187:13:MX_USART1_UART_Init	2
+../Core/Src/main.c:220:13:MX_GPIO_Init	1
+../Core/Src/main.c:241:6:Error_Handler	1

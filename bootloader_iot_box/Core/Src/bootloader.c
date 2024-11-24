@@ -11,14 +11,14 @@ extern UART_HandleTypeDef huart1;
 
 void debugPrint(const char *fmt, ...)
 {
-		char buff[128] = {0};
-		char buff2[145] = {0};
-		va_list arg;
-		va_start(arg, fmt);
-		vsprintf(buff, fmt, arg);
-		va_end(arg);
-		sprintf(buff2,"@>%s",buff);
-		HAL_UART_Transmit(&huart1,(uint8_t*)buff2,strlen(buff2),HAL_MAX_DELAY);
+	char buff[300] = {0};
+	char buff2[320] = {0};
+	va_list arg;
+	va_start(arg, fmt);
+	vsprintf(buff, fmt, arg);
+	va_end(arg);
+	sprintf(buff2,"@>%03d%s",strlen(buff),buff);
+	HAL_UART_Transmit(&huart1,(uint8_t*)buff2,strlen(buff2),100);
 }
 
 #define FIRMWARE_UPDATE_DGB debugPrint
@@ -26,15 +26,15 @@ void debugPrint(const char *fmt, ...)
 #define NRF_SUCCESS 0
 #define CODE_PAGE_SIZE FLASH_PAGE_SIZE
 
-firmware_update_info_t fwUpdateInfo = //{0};
-//for test
-{
-	.firmwareSize = 0x5678,
-//	.isNeedUpdateFirmware = 0,
-//	.crc32 = 0x92A44637
-	.isNeedUpdateFirmware = 1,
-	.crc32 = 0x96655B80
-};
+firmware_update_info_t fwUpdateInfo = {0};
+////for test
+//{
+//	.firmwareSize = 0x5678,
+////	.isNeedUpdateFirmware = 0,
+////	.crc32 = 0x92A44637
+//	.isNeedUpdateFirmware = 1,
+//	.crc32 = 0x96655B80
+//};
 uint8_t buffer_page_read_write[CODE_PAGE_SIZE];//buffer to read write flash, assurance roundup 4 byte unit write flash
 static uint32_t round_up_u32(uint32_t len)
 {
@@ -94,6 +94,7 @@ bool firmware_update_checkHaveNewFimrware()
 				}
 		}
 		FIRMWARE_UPDATE_DGB("No need update firmware\n");
+		FIRMWARE_UPDATE_DGB("Current firmware size %d byte\n",fwUpdateInfo.firmwareSize);
 		return false;
 }
 
@@ -130,7 +131,7 @@ bool firmware_update_updateNewFirmware()
 				}
 				FIRMWARE_UPDATE_DGB("copy from 0x%08X to 0x%08X with %d bytes\n",src_addr, dst_addr, size_copy);
 				memcpy(buffer_page_read_write, (void*)src_addr, size_copy);
-				Flash_Write_Data(dst_addr, (uint32_t*)buffer_page_read_write, size_copy/4);
+				Flash_Write_Array(dst_addr, (uint8_t*)buffer_page_read_write, size_copy);
 
 				dst_addr = dst_addr + CODE_PAGE_SIZE;
 				src_addr = src_addr + CODE_PAGE_SIZE;

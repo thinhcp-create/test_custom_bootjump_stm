@@ -1,0 +1,23 @@
+11:50:26 **** Incremental Build of configuration Debug for project stm_bld ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "stm_bld.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\STM32\stm_bld\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm_bld.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm_bld.elf
+ 
+arm-none-eabi-size  stm_bld.elf 
+arm-none-eabi-objdump -h -S stm_bld.elf  > "stm_bld.list"
+   text	   data	    bss	    dec	    hex	filename
+   8712	     12	   1644	  10368	   2880	stm_bld.elf
+arm-none-eabi-objcopy  -O ihex stm_bld.elf  "stm_bld.hex"
+Finished building: default.size.stdout
+arm-none-eabi-objcopy  -O binary stm_bld.elf  "stm_bld.bin"
+ 
+Finished building: stm_bld.hex
+Finished building: stm_bld.list
+ 
+Finished building: stm_bld.bin
+ 
+ 
+
+11:50:27 Build Finished. 0 errors, 0 warnings. (took 710ms)
+

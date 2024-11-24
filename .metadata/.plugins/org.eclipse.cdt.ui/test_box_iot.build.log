@@ -1,0 +1,43 @@
+18:36:05 **** Incremental Build of configuration Debug for project test_box_iot ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../Middlewares/Third_Party/FatFs/src/drivers -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:201:27: warning: implicit declaration of function 'FS_FileOperations' [-Wimplicit-function-declaration]
+  201 |                           FS_FileOperations();
+      |                           ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'process_data':
+../Core/Src/main.c:603:13: warning: implicit declaration of function 'mqtt_data_send' [-Wimplicit-function-declaration]
+  603 |             mqtt_data_send((char *)format_string);
+      |             ^~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:721:6: warning: conflicting types for 'FS_FileOperations'; have 'void()'
+  721 | void FS_FileOperations()
+      |      ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:201:27: note: previous implicit declaration of 'FS_FileOperations' with type 'void()'
+  201 |                           FS_FileOperations();
+      |                           ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'FS_FileOperations':
+../Core/Src/main.c:725:9: warning: implicit declaration of function 'RAM_FATFS_Init'; did you mean 'MX_FATFS_Init'? [-Wimplicit-function-declaration]
+  725 |         RAM_FATFS_Init();
+      |         ^~~~~~~~~~~~~~
+      |         MX_FATFS_Init
+arm-none-eabi-gcc -o "test_box_iot.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\STM32\test_box_iot\STM32F103RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="test_box_iot.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: test_box_iot.elf
+ 
+arm-none-eabi-size  test_box_iot.elf 
+arm-none-eabi-objdump -h -S test_box_iot.elf  > "test_box_iot.list"
+   text	   data	    bss	    dec	    hex	filename
+  71096	    400	  45040	 116536	  1c738	test_box_iot.elf
+arm-none-eabi-objcopy  -O ihex test_box_iot.elf  "test_box_iot.hex"
+Finished building: default.size.stdout
+arm-none-eabi-objcopy  -O binary test_box_iot.elf  "test_box_iot.bin"
+ 
+Finished building: test_box_iot.hex
+Finished building: test_box_iot.bin
+ 
+ 
+Finished building: test_box_iot.list
+ 
+
+18:36:08 Build Finished. 0 errors, 4 warnings. (took 2s.633ms)
+

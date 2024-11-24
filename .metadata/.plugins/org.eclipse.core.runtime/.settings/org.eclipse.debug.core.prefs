@@ -4,4 +4,4 @@
 //org.eclipse.debug.core.PREFERRED_DELEGATES/org.eclipse.cdt.launch.postmortemLaunchType=org.eclipse.cdt.dsf.gdb.launch.coreCLaunch,debug,;
 //org.eclipse.debug.core.PREFERRED_DELEGATES/org.eclipse.cdt.launch.remoteApplicationLaunchType=org.eclipse.rse.remotecdt.dsf.debug,debug,;
 eclipse.preferences.version=1
-prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions/>\r\n
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n    <expression enabled\="true" text\="crc32_firmwave"/>\r\n    <expression enabled\="true" text\="g_ota"/>\r\n    <expression enabled\="true" text\="fwUpdateInfo"/>\r\n    <expression enabled\="true" text\="process_count"/>\r\n    <expression enabled\="true" text\="ota_index"/>\r\n    <expression enabled\="true" text\="count"/>\r\n    <expression enabled\="true" text\="Timer_frame_ota"/>\r\n    <expression enabled\="true" text\="data_ota"/>\r\n    <expression enabled\="true" text\="data_ota_debug"/>\r\n    <expression enabled\="true" text\="g_rx1_buffer"/>\r\n</watchExpressions>\r\n

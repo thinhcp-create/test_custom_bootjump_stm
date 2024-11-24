@@ -6,3 +6,4 @@
 ../Core/Src/FlASH_PAGE_F1.c:137:6:Convert_To_Str	3
 ../Core/Src/FlASH_PAGE_F1.c:148:6:Flash_Write_NUM	1
 ../Core/Src/FlASH_PAGE_F1.c:157:7:Flash_Read_NUM	1
+../Core/Src/FlASH_PAGE_F1.c:166:10:Flash_Write_Array	6
